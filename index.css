@@ -60,7 +60,8 @@ header{
 /* colours section */
 
 .hero-section{
-
+    width:550px;
+    height:auto;
 }
 
 #colors-section{
@@ -72,12 +73,26 @@ header{
 
 .separate-color{
     width:110px;
-    color:#D5D4D8;
 }
 
 .color-scheme{
-    height: 414px;
+    height:414px;
     width:110px;
     cursor:pointer;
+    /* padding-right:20px; */
+}
+
+.hex-code{
+    font-family: "Inter", sans-serif;
+    line-height:24%;
+    font-size:0.75rem;
+    text-align:center;
+    color:#D5D4D8;
+    margin:20px 0px;
+    cursor:pointer;
+}
+
+#color-count-input{
+    /* display:none; */
 }
 

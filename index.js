@@ -4,15 +4,28 @@ const getSchemeBtn = document.getElementById('get-color-scheme-btn')
 let colorCount=5
 const colorIds=[]
 document.addEventListener('click',function(e){
-
     for(let colorId of colorIds){
+        const colorImg = document.getElementById(`hex-${colorId}`)
+        colorImg.style.border='none'
         if(e.target.id===`hex-${colorId}`){
             navigator.clipboard.writeText(
-                document.getElementById(`${e.target.id}`).dataset.hex
+                document.getElementById(`hex-${colorId}`).dataset.hex
+            )
+             colorImg.focus({
+                focusVisible:true
+            })
+           colorImg.style.border='1px solid #00b4d8'
+        }
+        if(e.target.id===`hex-code-${colorId}`){
+            colorImg.focus({
+                focusVisible:true
+            })
+           colorImg.style.border='1px solid #00b4d8'
+            navigator.clipboard.writeText(
+                document.getElementById(`hex-${colorId}`).dataset.hex
             )
         }
     }
-
     if (e.target.id==='get-color-scheme-btn'){
         renderColorScheme()
     }
@@ -31,6 +44,7 @@ function changeColorCount(){
 function renderColorCount(){
     changeColorCount()
     renderColorScheme()
+    // document.getElementById('color-count-input').style.display='block'
 }
     
 
@@ -59,22 +73,22 @@ function renderColorScheme(){
         const countSection = document.getElementById('count-section')
         const colorsArr = []
         for (let color of data.colors){
-            console.log(`hex-${data.colors.indexOf(color)}`)
-            colorIds.push(data.colors.indexOf(color))
+            const indexOfColor=data.colors.indexOf(color)
+            colorIds.push(indexOfColor)
             colorsArr.push(`
-                <div class='separate-color' >
+                <div class='separate-color'>
                     <img 
-                    id='hex-${data.colors.indexOf(color)}' 
+                    id='hex-${indexOfColor}' 
                     class='color-scheme' 
                     src=${color.image.bare}
                     data-hex=${color.hex.value}>
-                    <p class='hex-code'>${color.hex.value}</p>
-                </div>`)
+                    <p class='hex-code' id='hex-code-${indexOfColor}'>${color.hex.value}</p>
+                </div>`
+            )
         }
         colorsSection.innerHTML=colorsArr.join('')
         const countHtml=[]
         countHtml.push(`
-        <div class='count-change-container'>
             <button id="change-color-count">Change color count</button>
             <input 
             value='${colorCount}'
@@ -82,7 +96,6 @@ function renderColorScheme(){
             type='number' 
             placeholder='Enter the count'
             name='count-of-colors'>
-        </div>
         `)
         countSection.innerHTML=countHtml.join('')
     })
