@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Color picker</title>
+        <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <meta name="viewpoint" content="width=device-width intial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <input type="color" id="get-color">
+            <select name="colors" id="get-scheme">
+                <option value="analogic">Analogic</option>
+                <option value="monochrome">Monochrome</option>
+                <option value="monochrome-light">Monochrome-light</option>
+                <option value="monochrome-dark">Monochrome-dark</option>
+                <option value="complement">Complement</option>
+                <option value="analogic-complement">Analogic-complement</option>
+                <option value="triad">Triad</option>
+                <option value="quad">Quad</option>
+            </select>
+            <button id="get-color-scheme-btn">Get color scheme</button>
+        </header>
+        <main class="hero-section">
+            <div id="colors-section">
+                <!-- render the colors here -->
+            </div>
+            <div id="count-section">
+                <!-- render count elements -->
+            </div>
+        </main>
+        <script src="index.js"></script>
+    </body>
+</html>
