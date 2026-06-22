@@ -2,19 +2,22 @@ const getColor = document.getElementById('get-color')
 const getScheme = document.getElementById('get-scheme')
 const getSchemeBtn = document.getElementById('get-color-scheme-btn')
 let colorCount=5
-
+const colorIds=[]
 document.addEventListener('click',function(e){
+
+    for(let colorId of colorIds){
+        if(e.target.id===`hex-${colorId}`){
+            navigator.clipboard.writeText(
+                document.getElementById(`${e.target.id}`).dataset.hex
+            )
+        }
+    }
+
     if (e.target.id==='get-color-scheme-btn'){
         renderColorScheme()
     }
-    if (e.target.id==='hex-code'){
-        
-        navigator.clipboard.writeText(
-            getColorProperties().hex
-        )
-    }
     if(e.target.id==='change-color-count'){
-        changeColorCount()
+        renderColorCount()
     }
 })
 
@@ -22,12 +25,14 @@ function changeColorCount(){
     if (document.getElementById('color-count-input')){
         const colorCountInput= document.getElementById('color-count-input')
         colorCount=Number(colorCountInput.value)
-        renderColorScheme()
-        // colorCountInput.value=colorCount
-        console.log(colorCountInput)
     }
-    
 }
+
+function renderColorCount(){
+    changeColorCount()
+    renderColorScheme()
+}
+    
 
 function getColorProperties(){
 
@@ -42,9 +47,8 @@ function getColorProperties(){
 }
 
 function renderColorScheme(){
-
+    changeColorCount()
     const colorProperties  = getColorProperties()
-    console.log(colorProperties)
     fetch(`https://www.thecolorapi.com/scheme?
     hex=${colorProperties.hex}&rgb=${colorProperties.rgb}
     &format=json&mode=${getScheme.value}&count=${colorCount}`)
@@ -55,10 +59,16 @@ function renderColorScheme(){
         const countSection = document.getElementById('count-section')
         const colorsArr = []
         for (let color of data.colors){
+            console.log(`hex-${data.colors.indexOf(color)}`)
+            colorIds.push(data.colors.indexOf(color))
             colorsArr.push(`
-                <div class='separate-color'>
-                    <img class='color-scheme' src=${color.image.bare}>
-                    <p id='hex-code'>${color.hex.value}</p>
+                <div class='separate-color' >
+                    <img 
+                    id='hex-${data.colors.indexOf(color)}' 
+                    class='color-scheme' 
+                    src=${color.image.bare}
+                    data-hex=${color.hex.value}>
+                    <p class='hex-code'>${color.hex.value}</p>
                 </div>`)
         }
         colorsSection.innerHTML=colorsArr.join('')

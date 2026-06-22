@@ -57,6 +57,8 @@ header{
     cursor:pointer;
 }
 
+/* colours section */
+
 .hero-section{
 
 }
@@ -76,5 +78,6 @@ header{
 .color-scheme{
     height: 414px;
     width:110px;
+    cursor:pointer;
 }
 
