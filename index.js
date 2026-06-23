@@ -3,27 +3,15 @@ const getScheme = document.getElementById('get-scheme')
 const getSchemeBtn = document.getElementById('get-color-scheme-btn')
 let colorCount=5
 const colorIds=[]
+
 document.addEventListener('click',function(e){
     for(let colorId of colorIds){
-        const colorImg = document.getElementById(`hex-${colorId}`)
+        const colorImg = document.getElementById(`hex-color-${colorId}`)
         colorImg.style.border='none'
-        if(e.target.id===`hex-${colorId}`){
-            navigator.clipboard.writeText(
-                document.getElementById(`hex-${colorId}`).dataset.hex
-            )
-             colorImg.focus({
-                focusVisible:true
-            })
-           colorImg.style.border='1px solid #00b4d8'
-        }
-        if(e.target.id===`hex-code-${colorId}`){
-            colorImg.focus({
-                focusVisible:true
-            })
-           colorImg.style.border='1px solid #00b4d8'
-            navigator.clipboard.writeText(
-                document.getElementById(`hex-${colorId}`).dataset.hex
-            )
+        if(e.target.id===`hex-color-${colorId}` || e.target.id===`hex-code-${colorId}`)
+        {
+            changeColorBorder(colorImg)
+            copyAndRenderMessage(colorImg)
         }
     }
     if (e.target.id==='get-color-scheme-btn'){
@@ -34,30 +22,16 @@ document.addEventListener('click',function(e){
     }
 })
 
-function changeColorCount(){
-    if (document.getElementById('color-count-input')){
-        const colorCountInput= document.getElementById('color-count-input')
-        colorCount=Number(colorCountInput.value)
-    }
+function changeColorBorder(colorDom){
+    colorDom.style.border='1px solid #00b4d8'
 }
 
-function renderColorCount(){
-    changeColorCount()
-    renderColorScheme()
-    // document.getElementById('color-count-input').style.display='block'
-}
-    
-
-function getColorProperties(){
-
-    const colorCode = getColor.value
-    const red = parseInt(getColor.value.substring(1,3),16)
-    const green = parseInt(getColor.value.substring(3,5),16)
-    const blue = parseInt(getColor.value.substring(5,7),16)
-    return {
-        hex:colorCode.substring(1),
-        rgb:`${red},${green},${blue}`
-    }
+function copyAndRenderMessage(colorDom){
+    navigator.clipboard.writeText(
+        colorDom.dataset.hex
+    )
+    const messageEl =document.getElementById('message')
+    messageEl.textContent = `Copied hex code ${colorDom.dataset.hex} to clipboard`
 }
 
 function renderColorScheme(){
@@ -78,26 +52,60 @@ function renderColorScheme(){
             colorsArr.push(`
                 <div class='separate-color'>
                     <img 
-                    id='hex-${indexOfColor}' 
+                    id='hex-color-${indexOfColor}' 
                     class='color-scheme' 
                     src=${color.image.bare}
-                    data-hex=${color.hex.value}>
+                    data-hex=${color.hex.value}
+                    alt=${color.name.value}>
                     <p class='hex-code' id='hex-code-${indexOfColor}'>${color.hex.value}</p>
                 </div>`
             )
         }
         colorsSection.innerHTML=colorsArr.join('')
+        tabSelector()
         const countHtml=[]
         countHtml.push(`
-            <button id="change-color-count">Change color count</button>
+            <label for='color-count-input'>
+                Enter the color count
+            </label>
             <input 
             value='${colorCount}'
             id='color-count-input'
             type='number' 
             placeholder='Enter the count'
             name='count-of-colors'>
+            <button id="change-color-count">Refresh Scheme</button>
         `)
         countSection.innerHTML=countHtml.join('')
     })
 }
 
+function changeColorCount(){
+    if (document.getElementById('color-count-input')){
+        const colorCountInput= document.getElementById('color-count-input')
+        colorCount=Number(colorCountInput.value)
+    }
+}
+
+function getColorProperties(){
+    const colorCode = getColor.value
+    const red = parseInt(getColor.value.substring(1,3),16)
+    const green = parseInt(getColor.value.substring(3,5),16)
+    const blue = parseInt(getColor.value.substring(5,7),16)
+    return {
+        hex:colorCode.substring(1),
+        rgb:`${red},${green},${blue}`
+    }
+}
+
+function tabSelector(){
+    for (let colorId of colorIds){
+        const colorImg = document.getElementById(`hex-color-${colorId}`)
+        colorImg.tabIndex=0
+    }
+}
+
+function renderColorCount(){
+    changeColorCount()
+    renderColorScheme()
+}
