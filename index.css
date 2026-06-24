@@ -5,8 +5,8 @@
 }
 
 body{
-    width:100%;
-    height:100%;
+    width:479px;
+    height:550px;
     margin:0px auto;
     padding:0px;
 }
@@ -20,6 +20,7 @@ header{
     align-items:center;
     gap:10px;
 }
+
 
 #get-color{
     width:55px;
@@ -47,7 +48,6 @@ header{
     color:#FFFFFF;
     border:none;
     font-size:0.65rem;
-    /* line-height:16%; */
 }
 
 /* colors section */
@@ -64,8 +64,8 @@ header{
 }
 
 .color-scheme{
-    height:414vh;
-    width:96px;
+    height:414px;
+    width:100%;
 }
 
 .hex-code{
@@ -96,7 +96,7 @@ header{
     background:#1F2937;
 }
 
-/* change count section */
+/* count section */
 #count-section{ 
     display:flex;
     margin:0.625em auto;
@@ -128,4 +128,92 @@ label{
     text-align:center;
     color:#16DB99;
     font-size:1.1rem;
+}
+
+@media (prefers-color-scheme: dark){
+    img{
+        filter:invert(1) hue-rotate(180deg);
+    }
+}
+
+@media (min-width:480px){
+
+    body{
+        width:auto;
+        max-width:768px;
+        margin:0 auto;
+        height:auto;
+    }
+
+    /* header section */
+
+    header{
+        height:110px;
+        align-items:center;
+        justify-content:space-between;
+        padding:0 10px;
+    }
+    #get-color{
+        min-width:55px;
+    }
+    #get-scheme{
+        width:470px;
+    }
+    #get-color-scheme-btn{
+        padding:15px 20px;
+        height:auto;
+        width:auto;
+        font-size:1rem;
+    }
+
+    /* colors section */
+
+    #colors-section{
+        width:auto;
+        max-width:748px;
+        height:auto;
+    }
+    .separate-color{
+        width:auto;
+        max-width:120px;
+    }
+    .color-scheme{
+        height:550px;
+        width:auto;
+        max-width:120px;
+    }
+    .hex-code{
+        font-size:1rem;
+        text-align:center;
+    }
+
+    /* count section */
+
+    #count-section{ 
+        margin:1.5em auto;
+        gap:25px;
+    }
+
+    #color-count-input{
+        width:400px;
+        padding:0.4em 0.4em;
+        border-radius:5px;
+        font-size:1rem;
+    }
+
+    #change-color-count{
+        font-size:1.5rem;
+        margin-bottom:10px;
+    }
+
+    label{
+        font-size:2rem;
+    }
+
+    /* message */
+
+    #message{
+        font-size:1.7rem;
+        margin-bottom:30px;
+    }
 }

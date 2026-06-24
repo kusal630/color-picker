@@ -56,7 +56,7 @@ function renderColorScheme(){
                     class='color-scheme change-cursor' 
                     src=${color.image.bare}
                     data-hex=${color.hex.value}
-                    alt=${color.name.value}>
+                    alt='${color.name.value} with hex value ${color.hex.value}'>
                     <p 
                     class='hex-code change-cursor change-font' 
                     id='hex-code-${indexOfColor}'>
