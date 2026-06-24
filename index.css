@@ -5,15 +5,15 @@
 }
 
 body{
-    max-width:480px;
-    height:550px;
+    width:100%;
+    height:100%;
     margin:0px auto;
     padding:0px;
 }
 
 /* header-section */
 header{
-    width:480px;
+    width:100%;
     height:90px;
     display:flex;
     justify-content:center;
@@ -64,7 +64,7 @@ header{
 }
 
 .color-scheme{
-    height:414px;
+    height:414vh;
     width:96px;
 }
 
