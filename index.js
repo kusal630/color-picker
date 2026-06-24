@@ -53,11 +53,14 @@ function renderColorScheme(){
                 <div class='separate-color'>
                     <img 
                     id='hex-color-${indexOfColor}' 
-                    class='color-scheme' 
+                    class='color-scheme change-cursor' 
                     src=${color.image.bare}
                     data-hex=${color.hex.value}
                     alt=${color.name.value}>
-                    <p class='hex-code' id='hex-code-${indexOfColor}'>${color.hex.value}</p>
+                    <p 
+                    class='hex-code change-cursor change-font' 
+                    id='hex-code-${indexOfColor}'>
+                    ${color.hex.value}</p>
                 </div>`
             )
         }
@@ -65,7 +68,7 @@ function renderColorScheme(){
         tabSelector()
         const countHtml=[]
         countHtml.push(`
-            <label for='color-count-input'>
+            <label class='change-font-color' for='color-count-input'>
                 Enter the color count
             </label>
             <input 
@@ -74,7 +77,10 @@ function renderColorScheme(){
             type='number' 
             placeholder='Enter the count'
             name='count-of-colors'>
-            <button id="change-color-count">Refresh Scheme</button>
+            <button 
+            id="change-color-count"
+            class="change-cursor"
+            >Refresh Scheme</button>
         `)
         countSection.innerHTML=countHtml.join('')
     })

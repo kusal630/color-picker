@@ -5,19 +5,16 @@
 }
 
 body{
-    width:550px;
+    max-width:480px;
     height:550px;
     margin:0px auto;
     padding:0px;
-    background-color:#1F2937;
 }
 
 /* header-section */
-
 header{
-    width:550px;
+    width:480px;
     height:90px;
-    background:#1F2937;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -25,72 +22,82 @@ header{
 }
 
 #get-color{
-    width:61px;
+    width:55px;
     height:43px;
     padding:0px;
     border:none;
-    cursor:pointer;
 }
 
 #get-scheme{
     height:fit-content;
-    width:312px;
+    width:300px;
     padding:0.8125em 0.5625em;
     border-radius:6px;
     background:#1F293A;
-    color:#D1D5DB;
     box-shadow:0px 0px 1px;
-    font-family: "Inter", sans-serif;
     font-size:1rem;
     line-height:24%;
 }
 
 #get-color-scheme-btn{
-    width:123px;
+    width:100px;
     height:42px;
     border-radius:4px;
     background-color:#3D4B60;
     color:#FFFFFF;
     border:none;
-    font-family: "Inter", sans-serif;
-    font-size:0.75rem;
-    line-height:16%;
-    cursor:pointer;
+    font-size:0.65rem;
+    /* line-height:16%; */
 }
 
 /* colors section */
-
 #colors-section{
-    width:550px;
+    width:480px;
     height:auto;
     display:flex;
     flex-wrap:wrap;
+    justify-content: center;
 }
 
 .separate-color{
-    width:110px;
-    max-width:100%;
+    width:96px;
 }
 
 .color-scheme{
     height:414px;
-    width:110px;
-    cursor:pointer;
+    width:96px;
 }
 
 .hex-code{
-    font-family: "Inter", sans-serif;
     line-height:24%;
     font-size:0.75rem;
     text-align:center;
     color:#D5D4D8;
     margin:1.25em 0em;
+}
+
+/* change cursor */
+.change-cursor{
     cursor:pointer;
 }
 
-/* change count section */
+/* change font */
+.change-font{
+    font-family: "Inter", sans-serif;
+}
 
-#count-section{
+/* change-font-color */
+.change-font-color{
+    color:#D1D5DB;
+}
+
+/* change background */
+.change-background{
+    background:#1F2937;
+}
+
+/* change count section */
+#count-section{ 
     display:flex;
     margin:0.625em auto;
     flex-direction:column;
@@ -109,17 +116,14 @@ header{
     border:none;
     padding:0.5em 0.9375em;
     border-radius:5px;
-    cursor:pointer;
     color:#1F2937;
 }
 
 label{
-    color:#D1D5DB;
     font-size:1.125rem;
 }
 
 /* message */
-
 #message{
     text-align:center;
     color:#16DB99;

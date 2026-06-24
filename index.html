@@ -8,14 +8,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
         <meta name="viewpoint" content="width=device-width intial-scale=1.0">
     </head>
-    <body>
-        <header>
+    <body class="change-background">
+        <header class="change-background">
             <input 
             type="color" 
+            class="change-cursor"
             id="get-color" 
             aria-label="color palette to select colors"
             aria-live="polite">
-            <select name="colors" id="get-scheme">
+            <select class="change-font change-font-color" name="colors" id="get-scheme">
                 <option value="analogic">Analogic</option>
                 <option value="monochrome">Monochrome</option>
                 <option value="monochrome-light">Monochrome-light</option>
@@ -25,7 +26,10 @@
                 <option value="triad">Triad</option>
                 <option value="quad">Quad</option>
             </select>
-            <button id="get-color-scheme-btn">Get color scheme</button>
+            <button 
+            id="get-color-scheme-btn"
+            class="change-cursor change-font"
+            >Get color scheme</button>
         </header>
         <main class="hero-section">
             <div id="colors-section">
@@ -34,7 +38,10 @@
             <div id="count-section">
                 <!-- render count elements -->
             </div>
-            <p id="message"></p>
+            <p 
+            id="message" 
+            aria-label="message for hex code copy" 
+            aria-live="polite"></p>
         </main>
         <script src="index.js"></script>
     </body>
